@@ -1,8 +1,8 @@
-ARG GO_VERSION
+ARG GO_VERSION=1.15
 
 # build stage
-FROM golang:$GO_VERSION-alpine3.11 AS build-stage
-ARG OPERATOR_SDK_VERSION
+FROM golang:$GO_VERSION-alpine3.12 AS build-stage
+ARG OPERATOR_SDK_VERSION=0.17.0
 ENV GO111MODULE=on
 RUN apk --no-cache add git curl make \
     && curl -L https://github.com/operator-framework/operator-sdk/releases/download/v$OPERATOR_SDK_VERSION/operator-sdk-v$OPERATOR_SDK_VERSION-x86_64-linux-gnu -o /usr/local/bin/operator-sdk \
